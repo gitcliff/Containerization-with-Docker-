@@ -1,0 +1,36 @@
+# 📦 SUMMARY  
+# This command lists all running Docker containers on your system.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to check which containers are active and view their details (container ID, names, status, etc.)  
+# Outcome: Displays a table of running Docker containers with metadata like IDs, ports, and uptime  
+# Why this matters: Helps verify that your PostgreSQL (or any) container is running and monitor its status  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: List Running Docker Containers  
+# ------------------------------  
+docker ps  
+# ✅ What it does:  
+# - Shows all containers currently running  
+# - Outputs columns: CONTAINER ID, IMAGE, COMMAND, CREATED, STATUS, PORTS, NAMES  
+# 🧠 Why it matters:  
+# - Useful for identifying container IDs for further commands (e.g., stop, exec, logs)  
+# - Lets you confirm if your PostgreSQL container (or any other container) is active and on which ports it’s exposed  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# Bash/Linux shell: Run as shown  
+# PowerShell (Windows): Same command works directly in PowerShell or Command Prompt  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - To view **all containers** (running and stopped), use:  
+#   ```bash
+#   docker ps -a
+#   ```  
+# - To get just the container IDs (useful for scripts):  
+#   ```bash
+#   docker ps -q
+#   ```  
+# - If no containers are running, it will return an empty list.  

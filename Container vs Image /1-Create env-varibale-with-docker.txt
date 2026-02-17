@@ -1,0 +1,33 @@
+# 📦 SUMMARY  
+# This command runs a PostgreSQL 13.10 container with a predefined password for the PostgreSQL superuser.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to launch a PostgreSQL container with environment variables to set up initial credentials  
+# Outcome: A new PostgreSQL database server runs in a Docker container, ready for connections  
+# Why this matters: Useful for local development or testing without installing PostgreSQL directly on your system  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run PostgreSQL in Docker  
+# ------------------------------  
+docker run -e POSTGRES_PASSWORD=mysecretpassword postgres:13.10  
+# ✅ What it does:  
+# - Starts a container from the official `postgres:13.10` image  
+# - Sets the environment variable `POSTGRES_PASSWORD` to `mysecretpassword`  
+# - Exposes PostgreSQL on its default port inside the container (5432)  
+# 🧠 Why it matters:  
+# - The `POSTGRES_PASSWORD` sets the password for the default `postgres` superuser account.  
+# - Without setting this variable, PostgreSQL will refuse to start for security reasons.  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# Bash/Linux shell: Run the command as shown  
+# PowerShell (Windows): Same command works in PowerShell or Command Prompt if Docker Desktop is installed  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - To make the database accessible from your host, add `-p 5432:5432` to map ports:  
+#   ```bash
+#   docker run -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres:13.10
+#   ```  
+# - To persist data
