@@ -1,0 +1,42 @@
+# 📦 SUMMARY  
+# This command launches a PostgreSQL 14.7 container with a predefined password for the `postgres` superuser.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to run a PostgreSQL database in Docker with environment variables for initial setup  
+# Outcome: A running PostgreSQL 14.7 server inside a Docker container  
+# Why this matters: Lets you quickly spin up a PostgreSQL instance for development/testing without installing it directly on your system  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run PostgreSQL 14.7 in Docker  
+# ------------------------------  
+docker run -e POSTGRES_PASSWORD=mysecretpassword postgres:14.7  
+# ✅ What it does:  
+# - Pulls the official `postgres:14.7` image if not already on your system  
+# - Starts a container with PostgreSQL running  
+# - Sets the `POSTGRES_PASSWORD` environment variable to `mysecretpassword` (required for the initial `postgres` superuser account)  
+
+# 🧠 Why it matters:  
+# - Provides an isolated database environment  
+# - Good for development, testing, or running temporary PostgreSQL instances without affecting your host system  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# Bash/Linux shell: Run as shown  
+# PowerShell (Windows): Same command works in PowerShell if Docker Desktop is installed  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - To map the PostgreSQL port to your host (so you can connect from outside):  
+#   ```bash
+#   docker run -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres:14.7
+#   ```  
+# - To persist data across restarts, add a Docker volume:  
+#   ```bash
+#   docker run -e POSTGRES_PASSWORD=mysecretpassword -v pgdata:/var/lib/postgresql/data postgres:14.7
+#   ```  
+# - Default user is `postgres`, password is `mysecretpassword`, and default database is also `postgres`.  
+# - Check if the container is running with:  
+#   ```bash
+#   docker ps
+#   ```  
