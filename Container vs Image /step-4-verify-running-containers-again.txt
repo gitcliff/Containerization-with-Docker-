@@ -1,0 +1,44 @@
+# 📦 SUMMARY  
+# This command displays all Docker containers that are currently running.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to verify active Docker containers and see their metadata  
+# Outcome: You get a table listing running containers (with IDs, images, ports, etc.)  
+# Why this matters: Essential for monitoring, managing, or interacting with running containers (e.g., PostgreSQL)  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: List Active Docker Containers  
+# ------------------------------  
+docker ps  
+# ✅ What it does:  
+# - Lists all containers that are actively running  
+# - Displays details like:  
+#   - CONTAINER ID (short ID of the container)  
+#   - IMAGE (Docker image the container is running)  
+#   - COMMAND (startup command for the container)  
+#   - CREATED (how long ago it was started)  
+#   - STATUS (e.g., Up 10 minutes)  
+#   - PORTS (port mappings between host and container)  
+#   - NAMES (automatically generated or user-defined container name)  
+
+# 🧠 Why it matters:  
+# - Lets you confirm your PostgreSQL container is running and listening on the right ports  
+# - Needed before using commands like `docker exec`, `docker stop`, or `docker logs`  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# Bash/Linux shell: Run as shown  
+# PowerShell (Windows): Same command works directly in PowerShell or Command Prompt if Docker Desktop is installed  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - To show **all containers** (including stopped ones):  
+#   ```bash
+#   docker ps -a
+#   ```  
+# - To get only container IDs (for scripting):  
+#   ```bash
+#   docker ps -q
+#   ```  
+# - If no containers are running, the output will be empty.  
