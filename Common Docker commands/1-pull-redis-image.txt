@@ -1,0 +1,84 @@
+# 📦 SUMMARY  
+# These Docker commands pull, run, manage, and inspect Redis containers, demonstrating basic container lifecycle operations.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to pull images, start containers (foreground and detached), stop/start containers, and list running/all containers  
+# Outcome: You run Redis containers locally, control their states, and inspect their details  
+# Why this matters: Learning container management is fundamental for developing, testing, and deploying services in Docker  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Pull Redis Image and View Images  
+# ------------------------------  
+docker pull redis  
+# ✅ What it does: Downloads the latest Redis image from Docker Hub to your local system  
+# 🧠 Why it matters: You need the image locally to create Redis containers  
+# 🔄 Equivalent PowerShell command: Same as above (`docker pull redis`)  
+
+docker images  
+# ✅ What it does: Lists all Docker images available locally, including Redis just pulled  
+# 🧠 Why it matters: Lets you verify images before running containers  
+# 🔄 Equivalent PowerShell command: Same as above (`docker images`)  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run Redis Containers  
+# ------------------------------  
+docker run redis  
+# ✅ What it does: Runs a Redis container in the foreground (attaches terminal to container logs)  
+# 🧠 Why it matters: Good for debugging but blocks your terminal until you stop the container  
+# 🔄 Equivalent PowerShell command: Same as above (`docker run redis`)  
+
+docker ps  
+# ✅ What it does: Shows all currently running containers and their IDs  
+# 🧠 Why it matters: You’ll need these IDs to manage containers (stop/start) later  
+
+docker run -d redis  
+# ✅ What it does: Runs a Redis container in detached mode (in the background)  
+# 🧠 Why it matters: Allows your terminal to be free while Redis runs in the background  
+# 🔄 Equivalent PowerShell command: Same as above (`docker run -d redis`)  
+
+docker ps  
+# ✅ What it does: Lists all currently running containers again to confirm detached Redis is active  
+# 🧠 Why it matters: Ensures your detached container is up and running  
+
+docker run redis:6.2  
+# ✅ What it does: Runs a Redis container with a specific version tag (6.2)  
+# 🧠 Why it matters: Useful to run specific Redis versions for compatibility or testing  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Manage Running Containers  
+# ------------------------------  
+docker stop <container_id>  
+# ✅ What it does: Stops a running container identified by `<container_id>` (replace with actual ID from `docker ps`)  
+# 🧠 Why it matters: Gracefully stops the Redis server and frees system resources  
+# 🔄 Equivalent PowerShell command: Same as above (`docker stop <container_id>`)  
+
+docker ps  
+# ✅ What it does: Lists currently running containers after stopping one  
+# 🧠 Why it matters: Confirms the container was stopped successfully  
+
+docker start <container_id>  
+# ✅ What it does: Starts a previously stopped container by its ID  
+# 🧠 Why it matters: Restarts Redis without creating a new container  
+# 🔄 Equivalent PowerShell command: Same as above (`docker start <container_id>`)  
+
+docker ps  
+# ✅ What it does: Lists currently running containers again to confirm the start  
+# 🧠 Why it matters: Verifies Redis is active after restarting  
+
+docker ps -a  
+# ✅ What it does: Lists all containers including stopped ones  
+# 🧠 Why it matters: Lets you see the full lifecycle state of your Redis containers  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THESE COMMANDS  
+# ------------------------------  
+# Bash/Linux shell: Run each command as shown. Replace `<container_id>` with actual container ID from `docker ps`.  
+# PowerShell (Windows): Same commands work directly in PowerShell or Command Prompt if Docker Desktop is installed.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Use `docker ps` to get container IDs needed for `docker stop` and `docker start`.  
+# - Detached mode `-d` is recommended for services so your terminal is free.  
+# - Version tags (like `redis:6.2`) help maintain consistent environments across teams/systems.  
+# - If running `docker run redis` without `-d`, press Ctrl+C to stop the container.  
+# - If you forget the container ID, `docker ps -a` will show all containers (running + stopped).  

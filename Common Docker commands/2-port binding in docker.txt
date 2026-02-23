@@ -1,0 +1,58 @@
+# 📦 SUMMARY  
+# These commands run Redis containers with port mapping from host to container, both in foreground and detached modes, and list running containers.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to map container ports to host ports, run containers in detached mode, and verify running containers  
+# Outcome: Redis servers running on different host ports (6000, 6001) mapped to container’s default Redis port 6379  
+# Why this matters: Port mapping allows access to containerized services from your local machine or other network clients  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run Redis with Port Mapping  
+# ------------------------------  
+
+docker stop 966a15339c1d af12be26a3c  
+# ✅ What it does: Stops two running containers identified by their IDs  
+# 🧠 Why it matters: Frees up ports and system resources before starting new Redis instances  
+# 🔄 Equivalent PowerShell command: Same as above (`docker stop 966a15339c1d af12be26a3c`)  
+
+docker run -p 6000:6379 redis  
+# ✅ What it does:  
+# - Runs a Redis container and maps host port 6000 to container port 6379  
+# - Runs in foreground, showing logs in your terminal  
+# 🧠 Why it matters:  
+# - Lets you access Redis at localhost:6000 on your host machine  
+# - Useful for testing or debugging (but blocks terminal)  
+# 🔄 Equivalent PowerShell command: Same as above (`docker run -p 6000:6379 redis`)  
+
+docker ps  
+# ✅ What it does: Shows all currently running containers and their IDs  
+# 🧠 Why it matters: Confirms your Redis container is running and displays its container ID  
+
+docker ps -a  
+# ✅ What it does: Lists all containers (running and stopped) with details  
+# 🧠 Why it matters: Lets you check the full container lifecycle (useful for restarting stopped containers)  
+
+docker run -p 6001:6379 -d redis:6.2  
+# ✅ What it does:  
+# - Runs a second Redis container mapping host port 6001 to container port 6379 in detached mode  
+# 🧠 Why it matters:  
+# - Allows running multiple Redis instances on different host ports simultaneously  
+# 🔄 Equivalent PowerShell command: Same as above (`docker run -p 6001:6379 -d redis:6.2`)  
+
+docker ps  
+# ✅ What it does: Shows all running containers, now including two Redis instances on ports 6000 and 6001  
+# 🧠 Why it matters: Confirms multiple Redis containers are running without port conflicts  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# Bash/Linux shell: Run commands as is. Replace ports if they are in use or conflict with other services.  
+# PowerShell (Windows): Same commands work directly in PowerShell or Command Prompt with Docker Desktop installed.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Host port (left side in `-p`) must be unique and free on your machine, or the container won’t start.  
+# - Container port (right side) is Redis default port 6379 and usually remains unchanged.  
+# - To view logs for detached containers: `docker logs <container_id>`  
+# - To stop containers: `docker stop <container_id>`  
+# - If you forget a container ID, use `docker ps -a` to find it.  
