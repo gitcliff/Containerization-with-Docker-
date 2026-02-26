@@ -1,0 +1,30 @@
+# 📦 SUMMARY  
+# These commands install the Node.js project dependencies and then start the Node.js server application.  
+# Language/Platform: Bash (Node.js / npm)  
+# What you'll learn: How to set up a Node.js app by installing necessary packages and running the server  
+# Outcome: Your Node.js server will start running, ready to handle requests  
+# Why this matters: Installing dependencies is essential for the app to work correctly; starting the server launches the app for testing or use  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Install Dependencies and Start Node.js Server  
+# ------------------------------  
+npm install  
+# ✅ What it does: Installs all Node.js dependencies listed in package.json into the `node_modules` folder  
+# 🧠 Why it matters: The app requires these dependencies to function properly; without installing them, the app will fail to run  
+
+node server.js  
+# ✅ What it does: Starts the Node.js server by executing the main server script `server.js`  
+# 🧠 Why it matters: Runs the application, enabling it to listen for incoming requests and serve responses  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THESE COMMANDS  
+# ------------------------------  
+# 1. Run `npm install` once to set up your project dependencies (run inside your project directory).  
+# 2. Run `node server.js` to start the app whenever you want to run the server.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Ensure you are in the project directory where `package.json` and `server.js` reside before running these commands.  
+# - Use `npm install` only when you add or update dependencies.  
+# - If you want to restart the server automatically on code changes, consider using `nodemon` (`npm install -g nodemon` then `nodemon server.js`).  

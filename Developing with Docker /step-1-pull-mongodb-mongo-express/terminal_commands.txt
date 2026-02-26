@@ -1,0 +1,34 @@
+# 📦 SUMMARY  
+# These commands pull the latest MongoDB and Mongo Express Docker images from Docker Hub and list all downloaded Docker images on your machine.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to fetch official images for MongoDB database and its web-based admin UI, and verify image downloads  
+# Outcome: You get MongoDB and Mongo Express images ready locally to create containers and view all available images  
+# Why this matters: Enables quick setup of MongoDB database with a friendly web UI for managing data during development or testing  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Download MongoDB and Mongo Express Docker Images  
+# ------------------------------  
+docker pull mongo  
+# ✅ What it does: Downloads the latest official MongoDB Docker image  
+# 🧠 Why it matters: MongoDB is the database your app needs; pulling the image prepares it for container creation  
+
+docker pull mongo-express  
+# ✅ What it does: Downloads the latest official Mongo Express image (a web UI for MongoDB)  
+# 🧠 Why it matters: Provides a convenient web interface to interact with your MongoDB instance without needing CLI tools  
+
+docker images  
+# ✅ What it does: Lists all Docker images currently downloaded on your system  
+# 🧠 Why it matters: Lets you verify that the mongo and mongo-express images were successfully pulled and are available to run containers  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THESE COMMANDS  
+# ------------------------------  
+# Run each command in your terminal (bash or PowerShell). Pull commands will download images if not cached.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - `docker pull mongo` pulls the latest stable MongoDB image by default.  
+# - You can specify versions like `mongo:5.0` to pull a specific MongoDB version.  
+# - Mongo Express requires a running MongoDB container to connect to.  
+# - Use `docker run` commands after this to start containers based on these images.  

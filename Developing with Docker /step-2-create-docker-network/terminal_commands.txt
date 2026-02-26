@@ -1,0 +1,33 @@
+# 📦 SUMMARY  
+# These commands list existing Docker networks, create a new custom network named `mongo-network`, and then list networks again to confirm creation.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to manage Docker networks, create isolated environments for container communication, and verify network creation  
+# Outcome: A dedicated Docker network `mongo-network` is created to allow containers like MongoDB and Mongo Express to communicate securely  
+# Why this matters: Using custom Docker networks enables better security and network isolation for multi-container applications  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Manage Docker Networks for Container Communication  
+# ------------------------------  
+docker network ls  
+# ✅ What it does: Lists all existing Docker networks on your system  
+# 🧠 Why it matters: Helps you see current network configurations before adding new ones  
+
+docker network create mongo-network  
+# ✅ What it does: Creates a new Docker bridge network named `mongo-network`  
+# 🧠 Why it matters: Custom networks allow containers to communicate by name and isolate traffic from other containers or networks  
+
+docker network ls  
+# ✅ What it does: Lists Docker networks again to confirm that `mongo-network` was successfully created  
+# 🧠 Why it matters: Verifies your new network is available for use before running containers connected to it  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THESE COMMANDS  
+# ------------------------------  
+# Run commands one by one in bash or PowerShell. No special privileges required beyond Docker access.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Custom networks help containers find each other by container name instead of IP.  
+# - Use `docker network inspect mongo-network` to see detailed info about the created network.  
+# - By default, `docker run` attaches containers to the `bridge` network if no network specified.  

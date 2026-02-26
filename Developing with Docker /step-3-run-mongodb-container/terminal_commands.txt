@@ -1,0 +1,45 @@
+# 📦 SUMMARY  
+# These commands start a MongoDB container on a custom Docker network with root credentials, expose the default port, check container logs, and list running containers.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to run MongoDB with environment variables for authentication, connect it to a specific Docker network, and monitor container status  
+# Outcome: A running MongoDB container named `mongodb` accessible on localhost:27017, with logs viewable for troubleshooting  
+# Why this matters: Securely runs MongoDB in a container with authentication enabled and proper network isolation for multi-container apps  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run MongoDB Container with Custom Network and Authentication  
+# ------------------------------  
+docker run --network mongo-network --name mongodb \
+-e MONGO_INITDB_ROOT_USERNAME=admin \
+-e MONGO_INITDB_ROOT_PASSWORD=pass \
+-p 27017:27017 \
+-d mongo
+
+# ✅ What it does:  
+# - Runs MongoDB in detached mode (`-d`)  
+# - Connects container to custom network `mongo-network` for secure communication  
+# - Sets root username and password via environment variables for authentication  
+# - Maps container port 27017 (default MongoDB port) to host port 27017 for external access  
+# - Names the container `mongodb` for easy management  
+# 🧠 Why it matters: Ensures MongoDB runs securely with user authentication, accessible from host machine, and isolated on a custom network  
+
+docker logs <container_id>  
+# ✅ What it does: Displays logs from the MongoDB container, where `<container_id>` is the container's ID or name (e.g., `mongodb`)  
+# 🧠 Why it matters: Helps verify MongoDB started successfully and troubleshoot any startup issues  
+
+docker ps  
+# ✅ What it does: Lists all running containers, confirming the MongoDB container is active and showing container details  
+# 🧠 Why it matters: Confirms that your MongoDB container is up and running, ready to accept connections  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THESE COMMANDS  
+# ------------------------------  
+# 1. Run the docker run command exactly as shown, replacing `<container_id>` with your container name or ID when checking logs.  
+# 2. Use `docker ps` to check container status anytime.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Replace `pass` and `admin` with secure credentials in production.  
+# - Use container name `mongodb` in place of `<container_id>` for convenience:  
+#   docker logs mongodb  
+# - You can connect other containers on `mongo-network` directly to this MongoDB instance using `mongodb` as the hostname.  
