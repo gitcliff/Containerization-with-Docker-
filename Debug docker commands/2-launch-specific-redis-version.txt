@@ -1,0 +1,35 @@
+# 📦 SUMMARY  
+# This command runs a Redis container version 6.2 in detached mode, maps port 6002 on the host to 6379 in the container, and names the container `redis-older`.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to run a specific version of a container, map ports, run in background, and assign container names  
+# Outcome: A running Redis 6.2 server accessible on localhost:6002, identifiable by the container name `redis-older`  
+# Why this matters: Naming containers makes managing multiple containers easier; running specific versions ensures compatibility/testing  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run Redis 6.2 Container with Port Mapping and Name  
+# ------------------------------  
+docker run -d -p 6001:6379 --name redis-older redis:6.2  
+# ✅ What it does:  
+# - `-d`: Runs container in detached/background mode  
+# - `-p 6002:6379`: Maps host port 6002 to container’s Redis port 6379  
+# - `--name redis-older`: Assigns a friendly name to the container for easier management  
+# - `redis:6.2`: Specifies to run Redis image version 6.2 (not latest)  
+
+# 🧠 Why it matters:  
+# - Detached mode frees your terminal  
+# - Port mapping exposes Redis to your host on a custom port  
+# - Named containers allow easy commands like `docker stop redis-older` without needing container IDs  
+# - Running specific image versions helps avoid unexpected changes from latest versions  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# Bash/Linux shell and PowerShell: Run the command as is. Ensure port 6002 is free.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - To check status: `docker ps` or `docker ps -a` and look for `redis-older`  
+# - To stop container: `docker stop redis-older`  
+# - To view logs: `docker logs redis-older`  
+# - Avoid port conflicts by ensuring no other services use port 6002.  

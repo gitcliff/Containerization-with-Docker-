@@ -1,0 +1,36 @@
+# 📦 SUMMARY  
+# These commands check running containers, view logs of a specific container, and stop that container.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to inspect container status, troubleshoot via logs, and gracefully stop containers  
+# Outcome: Ability to manage container lifecycle and monitor container output for debugging or info  
+# Why this matters: Managing container state and viewing logs is crucial for operating Dockerized applications effectively  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Inspect and Manage Docker Containers  
+# ------------------------------  
+
+docker ps  
+# ✅ What it does: Lists all currently running Docker containers with their IDs, names, ports, and statuses  
+# 🧠 Why it matters: Lets you identify the container(s) you want to inspect, monitor, or stop  
+
+docker logs bc91edabf934  
+# ✅ What it does: Shows logs from the container with ID `bc91edabf934` (can use partial ID if unique)  
+# 🧠 Why it matters: Useful for debugging errors, monitoring app output, or verifying the container started correctly  
+
+docker stop 0341642466b0 7ae27ea26c27  
+# ✅ What it does: Stops two running containers identified by their IDs `0341642466b0` and `7ae27ea26c27`  
+# 🧠 Why it matters: Gracefully shuts down services, freeing system resources without abruptly killing processes  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THESE COMMANDS  
+# ------------------------------  
+# Bash/Linux shell: Run as shown. Replace container IDs with actual IDs from `docker ps`.  
+# PowerShell (Windows): Same commands work in PowerShell or Command Prompt with Docker Desktop installed.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Container IDs can be partial (e.g., first 6–12 characters) if unique.  
+# - Use `docker logs -f <container_id>` to follow logs live as they’re written. Press Ctrl+C to stop following.  
+# - To restart a stopped container: `docker start <container_id>`  
+# - Combine `docker ps -a` to view all containers, even those stopped, to get IDs for restarting or inspecting.  

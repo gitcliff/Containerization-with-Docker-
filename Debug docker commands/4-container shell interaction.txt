@@ -1,0 +1,43 @@
+# 📦 SUMMARY  
+# These commands open an interactive shell inside a running Docker container, navigate and explore its filesystem, and list environment variables.  
+# Language/Platform: Bash (Docker CLI inside container)  
+# What you'll learn: How to access a container’s terminal, explore files, and inspect environment variables within the container  
+# Outcome: Interactive shell session inside the container with ability to inspect its environment and filesystem  
+# Why this matters: Useful for debugging, configuration checks, and understanding container internals  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Access Container Shell and Inspect Environment  
+# ------------------------------  
+docker exec -it 32bca5f1d99e /bin/bash  
+# ✅ What it does:  
+# - Runs a Bash shell interactively inside the running container with ID `32bca5f1d99e`  
+# - `-i` keeps STDIN open, `-t` allocates a terminal so you can interact  
+# 🧠 Why it matters: Lets you run commands inside the container as if you were logged into it directly  
+
+pwd  
+# ✅ What it does: Prints the current directory inside the container  
+# 🧠 Why it matters: Helps you know your location in the container’s filesystem  
+
+cd /  
+# ✅ What it does: Changes directory to the root directory `/` in the container  
+# 🧠 Why it matters: Allows you to explore the root of the container filesystem  
+
+ls  
+# ✅ What it does: Lists files and folders in the current directory (`/`) inside the container  
+# 🧠 Why it matters: Lets you see the contents of the root filesystem for inspection or navigation  
+
+env  
+# ✅ What it does: Displays all environment variables inside the container  
+# 🧠 Why it matters: Useful for debugging configuration or verifying environment setup inside the container  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# Bash/Linux shell and PowerShell: Run exactly as shown, replacing `32bca5f1d99e` with your container ID or name  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - If `/bin/bash` doesn’t exist in your container, try `/bin/sh` instead.  
+# - To exit the container shell, type `exit` or press Ctrl+D.  
+# - Use this method to troubleshoot or modify running containers without restarting them.  

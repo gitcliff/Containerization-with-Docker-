@@ -1,0 +1,36 @@
+# 📦 SUMMARY  
+# These commands stop a running container by name, start a new Redis container named `redis-latest` mapped to port 6000, and list running containers.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to stop containers by name, run containers with custom names and port mapping, and verify running containers  
+# Outcome: Stops an old Redis container, runs a new Redis container on port 6000 with a friendly name, and confirms the running containers  
+# Why this matters: Managing container lifecycle by name and using port mapping helps keep your Docker environment organized and accessible  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Stop and Start Redis Containers with Custom Names  
+# ------------------------------  
+docker stop amazing_chatterjee  
+# ✅ What it does: Stops the running container named `amazing_chatterjee` gracefully  
+# 🧠 Why it matters: Frees system resources and avoids port conflicts before starting a new container  
+
+docker run -d -p 6000:6379 --name redis-latest redis  
+# ✅ What it does:  
+# - Runs the latest Redis container in detached mode  
+# - Maps host port 6000 to container port 6379  
+# - Names the container `redis-latest` for easier management  
+# 🧠 Why it matters: You can access Redis on localhost:6000 and manage the container by name instead of ID  
+
+docker ps  
+# ✅ What it does: Lists all running containers including `redis-latest`  
+# 🧠 Why it matters: Confirms your new Redis container is up and running with the expected configuration  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THESE COMMANDS  
+# ------------------------------  
+# Bash/Linux shell and PowerShell: Run commands exactly as shown. Replace container names if different.  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Always stop containers using their names or IDs before reusing ports.  
+# - Use `docker logs redis-latest` to check the container output.  
+# - To remove a container after stopping: `docker rm redis-latest`.  
