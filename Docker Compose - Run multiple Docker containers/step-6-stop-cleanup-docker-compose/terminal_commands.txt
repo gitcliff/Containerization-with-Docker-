@@ -1,0 +1,30 @@
+# 📦 SUMMARY  
+# This sequence stops and removes all containers and networks created by the Docker Compose file, then lists existing networks and running containers.  
+# Language/Platform: Bash (Docker Compose & Docker CLI)  
+# What you'll learn: How to clean up your Docker Compose environment and verify Docker resources afterward  
+# Outcome: All containers and networks from your Compose file are stopped and removed  
+# Why this matters: Frees system resources and avoids port conflicts for future runs  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Stop and Remove Docker Compose Containers and Networks  
+# ------------------------------  
+docker-compose -f docker-compose.yaml down  
+# ✅ What it does: Stops all containers defined in the Compose file and removes the containers, default network, and other resources created by Compose  
+# 🧠 Why it matters: Cleans up your environment to prevent leftover containers or networks that may interfere with future runs  
+
+docker network ls  
+# ✅ What it does: Lists all Docker networks on your system after cleanup  
+# 🧠 Why it matters: Confirms the Compose-created network has been removed, ensuring a clean slate  
+
+docker ps  
+# ✅ What it does: Lists all currently running containers (should be empty or only non-related containers)  
+# 🧠 Why it matters: Verifies that the Compose containers have stopped and been removed  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - To also remove volumes (e.g., MongoDB data), use:  
+#   docker-compose -f docker-compose.yaml down -v  
+# - If you want to stop containers but keep volumes and network:  
+#   docker-compose stop  
+# - Use `docker ps -a` to see stopped containers that haven’t been removed  

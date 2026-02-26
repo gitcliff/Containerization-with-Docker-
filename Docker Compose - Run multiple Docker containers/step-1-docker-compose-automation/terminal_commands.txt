@@ -1,0 +1,32 @@
+# 📦 SUMMARY  
+# This command starts all services defined in the `docker-compose.yaml` file by building and running their containers together.  
+# Language/Platform: Bash (Docker Compose)  
+# What you'll learn: How to use Docker Compose to orchestrate multi-container applications  
+# Outcome: All services (e.g., app, database, etc.) in the Compose file will be up and running as a single stack  
+# Why this matters: Docker Compose simplifies managing multi-container apps by handling networks, volumes, and dependencies automatically  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Start All Services Using Docker Compose  
+# ------------------------------  
+docker-compose -f docker-compose.yaml up  
+# ✅ What it does:  
+# - Uses the specified `docker-compose.yaml` file to create and start all defined services  
+# - Builds images if they don’t already exist  
+# - Attaches logs to your terminal so you can see real-time output from all services  
+# 🧠 Why it matters: Automates multi-container setup with a single command, saving time and reducing configuration errors  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS COMMAND  
+# ------------------------------  
+# 1. Make sure you’re in the directory containing `docker-compose.yaml` or provide the full path to the file.  
+# 2. Run `docker-compose -f docker-compose.yaml up` to start services.  
+# 3. To run in detached mode (background), add `-d`:  
+#    docker-compose -f docker-compose.yaml up -d  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - If the `-f` flag is omitted and the file is named `docker-compose.yml`, Docker Compose uses it by default.  
+# - Use `docker-compose down` to stop and remove all containers, networks, and volumes created.  
+# - You can check running services with `docker-compose ps` or view logs with `docker-compose logs`.  
+# - Make sure Docker and Docker Compose are installed and running on your system.  

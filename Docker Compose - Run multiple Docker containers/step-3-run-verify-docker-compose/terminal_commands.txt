@@ -1,0 +1,36 @@
+# 📦 SUMMARY  
+# This sequence brings up services from a Docker Compose file, then checks networks and running containers.  
+# Language/Platform: Bash (Docker Compose & Docker CLI)  
+# What you'll learn: Start multi-container apps, view Docker networks, and list active containers  
+# Outcome: MongoDB and Mongo Express containers are running and accessible  
+# Why this matters: Verifies your multi-container stack is properly deployed and networked  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Start Docker Compose Services and Verify Setup  
+# ------------------------------  
+docker-compose -f docker-compose.yaml up  
+# ✅ What it does: Starts all services defined in `docker-compose.yaml` in the foreground  
+# 🧠 Why it matters: Useful for debugging and seeing logs from all services together  
+# 🔄 Alternative (detached mode):  
+# docker-compose -f docker-compose.yaml up -d  
+# ✅ Detached mode runs containers in the background, freeing your terminal  
+
+docker network ls  
+# ✅ What it does: Lists all Docker networks currently available on your system  
+# 🧠 Why it matters: Lets you confirm that Docker Compose created a custom network for service communication  
+# 🔄 Typical output includes a network like `docker_default` or `mongo-network` from your YAML  
+
+docker ps  
+# ✅ What it does: Shows all currently running containers  
+# 🧠 Why it matters: Helps verify that MongoDB and Mongo Express are up and running as expected  
+# 🔄 Look for containers with names like `projectname_mongodb_1` and `projectname_mongo-express_1`  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - If you see “port already in use” errors, check for existing containers:  
+#   docker ps -a             # ✅ Lists all containers (running & stopped)  
+# - To stop all Compose services:  
+#   docker-compose down      # ✅ Stops containers and removes the network created by Compose  
+# - For live logs after detached start:  
+#   docker-compose logs -f   # ✅ Shows log output and follows updates  

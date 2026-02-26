@@ -1,0 +1,84 @@
+# 📦 SUMMARY  
+# This Docker Compose file defines two services: MongoDB and Mongo Express.  
+# Language/Platform: YAML (Docker Compose v3)  
+# What you'll learn: How to configure multi-container apps with environment variables, ports, volumes, and service dependencies  
+# Outcome: Spins up a MongoDB database and Mongo Express UI, pre-configured for seamless integration  
+# Why this matters: Simplifies running databases and admin tools locally or in dev environments with one command  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Docker Compose Configuration for MongoDB and Mongo Express  
+# ------------------------------  
+version: '3'  
+# ✅ What it does: Specifies Docker Compose file format version 3 (compatible with Docker Engine >= 1.13)  
+# 🧠 Why it matters: Enables features and syntax supported by Docker Compose v3  
+
+services:  
+  mongodb:  
+    image: mongo  
+    # ✅ What it does: Uses the official MongoDB Docker image  
+    # 🧠 Why it matters: Provides a pre-built containerized MongoDB database  
+
+    ports:  
+      - 27017:27017  
+      # ✅ What it does: Maps host port 27017 to container port 27017 for external access  
+      # 🧠 Why it matters: Lets applications and tools connect to MongoDB running in the container  
+
+    environment:  
+      - MONGO_INITDB_ROOT_USERNAME=admin  
+      - MONGO_INITDB_ROOT_PASSWORD=pass  
+      # ✅ What it does: Sets MongoDB root username and password via environment variables  
+      # 🧠 Why it matters: Ensures the database has secure access credentials on startup  
+
+    volumes:  
+      - mongo-data:/data/db  
+      # ✅ What it does: Mounts the `mongo-data` volume to persist MongoDB data  
+      # 🧠 Why it matters: Keeps data safe even if the container is removed  
+
+  mongo-express:  
+    image: mongo-express  
+    # ✅ What it does: Uses the official Mongo Express image (a web-based MongoDB admin UI)  
+    # 🧠 Why it matters: Provides a browser UI to interact with MongoDB visually  
+
+    restart: always  
+    # ✅ What it does: Automatically restarts the container if it crashes  
+    # 🧠 Why it matters: Improves reliability of the admin UI  
+
+    ports:  
+      - 8081:8081  
+      # ✅ What it does: Maps host port 8081 to container port 8081 to expose the UI  
+      # 🧠 Why it matters: Allows you to access Mongo Express at http://localhost:8081  
+
+    environment:  
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin  
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=pass  
+      - ME_CONFIG_MONGODB_SERVER=mongodb  
+      # ✅ What it does: Configures Mongo Express to connect to the MongoDB service using credentials and service name  
+      # 🧠 Why it matters: Links the UI to the correct MongoDB instance securely  
+
+    depends_on:  
+      - mongodb  
+      # ✅ What it does: Ensures MongoDB starts before mongo-express  
+      # 🧠 Why it matters: Prevents mongo-express from failing if MongoDB isn’t ready  
+
+volumes:  
+  mongo-data:  
+    driver: local  
+    # ✅ What it does: Defines a named volume `mongo-data` with default local driver  
+    # 🧠 Why it matters: Persists MongoDB data between container restarts  
+
+# ------------------------------  
+# ▶️ HOW TO USE THIS DOCKER COMPOSE FILE  
+# ------------------------------  
+# 1. Save as `docker-compose.yaml` or `docker-compose.yml`  
+# 2. Run:  
+#    docker-compose up -d    # ✅ Starts containers in detached mode  
+# 3. Open browser: http://localhost:8081 to access Mongo Express  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Default MongoDB port is 27017; default Mongo Express port is 8081.  
+# - Change admin credentials (`admin/pass`) in production for security.  
+# - `depends_on` only waits for container start—not service readiness. Use healthchecks for robust setups.  
+# - To stop and clean up:  
+#   docker-compose down -v    # ✅ Stops containers and removes volumes  

@@ -1,0 +1,37 @@
+# 📦 SUMMARY  
+# This step installs Node.js dependencies and starts your JS app’s server.  
+# Language/Platform: Node.js (npm, Express)  
+# What you'll learn: Install project dependencies and run a Node server  
+# Outcome: The app connects to MongoDB and serves HTTP requests  
+# Why this matters: It verifies that your containerized MongoDB stack supports your app  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Install Dependencies and Start Server  
+# ------------------------------  
+npm install  
+# ✅ What it does: Downloads and installs all dependencies listed in package.json (like Express, Mongoose, etc.)  
+# 🧠 Why it matters: Ensures your project has all required Node.js libraries to run  
+
+node server.js  
+# ✅ What it does: Starts the Node.js server defined in server.js  
+# 🧠 Why it matters: Boots up the application, which will now attempt to connect to MongoDB (via environment variables or config)  
+# 🔄 If successful, the app should log:  
+#    Listening on port <PORT_NUMBER>  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS CODE IN WINDOWS POWERSHELL  
+# ------------------------------  
+# Equivalent commands:  
+npm install            # ✅ Same as in Linux, installs Node dependencies  
+node .\server.js       # ✅ Runs server.js in the current folder  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - If `node server.js` fails with “Cannot find module”:  
+#   - Check `npm install` finished successfully  
+# - To run in background (Linux):  
+#   nohup node server.js &  
+# - To use a process manager for production:  
+#   npm install -g pm2  
+#   pm2 start server.js  
