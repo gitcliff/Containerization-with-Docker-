@@ -1,0 +1,43 @@
+# 📦 SUMMARY  
+# These commands run your built Docker image as a container and then check its logs to troubleshoot or verify behavior.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to start a container from an image and view its runtime output  
+# Outcome: Your Node.js app runs inside a container, and you can see its logs for debugging or monitoring  
+# Why this matters: Monitoring logs is essential to confirm your app started correctly and diagnose any issues  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run Docker Container  
+# ------------------------------  
+docker run my-app:1.0 
+# ✅ What it does: Starts a container from the image tagged "my-app:1.0"  
+# 🧠 Why it matters: Runs your Node.js application inside an isolated environment  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: View Container Logs  
+# ------------------------------  
+docker logs <container_id>  
+# ✅ What it does: Displays logs/output of the running container identified by <container_id>  
+# 🧠 Why it matters: Helps you see console messages, errors, or confirmation that the app is running properly  
+
+# ------------------------------  
+# ▶️ HOW TO GET <container_id>  
+# ------------------------------  
+# Run:  
+docker ps  
+# ✅ What it does: Lists all running containers along with their container IDs, names, and other details  
+# 🧠 Why it matters: You need the container ID to retrieve logs or manage the container  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS CODE IN WINDOWS POWERSHELL  
+# ------------------------------  
+# Commands are the same in PowerShell:  
+docker run my-app:1.0  
+docker logs <container_id>  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - To run the container in detached mode (background), add `-d`:  
+#   docker run -d my-app:1.0  
+# - To expose ports, add `-p host_port:container_port` (e.g., `-p 3000:3000`)  
+# - If logs show connection errors, check MongoDB connection details and environment variables  

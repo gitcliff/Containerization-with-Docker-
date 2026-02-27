@@ -1,0 +1,54 @@
+# 📦 SUMMARY  
+# This Dockerfile creates a lightweight Node.js containerized app that connects to MongoDB using environment variables.  
+# Language/Platform: Dockerfile (Node.js on Alpine Linux)  
+# What you'll learn: Setting environment variables, copying app code, installing dependencies, and starting the app inside a container  
+# Outcome: A Docker image ready to run your Node.js app connecting to MongoDB with specified credentials  
+# Why this matters: Simplifies app deployment and environment consistency in containers  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Base Image and Environment Setup  
+# ------------------------------  
+FROM node:20-alpine  
+# ✅ What it does: Uses official Node.js 20 image based on Alpine Linux (small size) as the base environment  
+# 🧠 Why it matters: Alpine keeps the image small and efficient for quick deployments  
+
+ENV MONGO_DB_USERNAME=admin \
+    MONGO_DB_PWD=pass  
+# ✅ What it does: Sets two environment variables for MongoDB credentials inside the container  
+# 🧠 Why it matters: Allows your app to read DB username and password from the environment, making config flexible and secure  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: App Directory and Code Copy  
+# ------------------------------  
+RUN mkdir -p /home/app  
+# ✅ What it does: Creates a directory `/home/app` inside the container for the app code  
+# 🧠 Why it matters: Organizes files and ensures the working directory exists  
+
+COPY ./app /home/app  
+# ✅ What it does: Copies all files from local `./app` folder into `/home/app` in the container  
+# 🧠 Why it matters: Moves your app source code into the image so it can be run inside the container  
+
+WORKDIR /home/app  
+# ✅ What it does: Sets `/home/app` as the current working directory for following commands  
+# 🧠 Why it matters: Ensures subsequent commands run in the app directory  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Install Dependencies and Start App  
+# ------------------------------  
+RUN npm install  
+# ✅ What it does: Runs npm to install all dependencies defined in your app’s package.json  
+# 🧠 Why it matters: Ensures the container has all required Node.js modules to run the app  
+
+CMD ["node", "server.js"]  
+# ✅ What it does: Defines the default command to start the Node.js server when the container runs  
+# 🧠 Why it matters: Automatically launches your app without needing manual intervention  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Make sure your app reads Mongo credentials from environment variables (process.env.MONGO_DB_USERNAME etc.)  
+# - Alpine images are minimal, so if you use native Node modules, you may need to install build tools (e.g., `apk add --no-cache make gcc g++ python3`)  
+# - To build the image:  
+#   docker build -t my-node-app .  
+# - To run the container:  
+#   docker run -e MONGO_DB_USERNAME=admin -e MONGO_DB_PWD=password -p 3000:3000 my-node-app  

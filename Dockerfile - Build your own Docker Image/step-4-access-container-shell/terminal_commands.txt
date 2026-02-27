@@ -1,0 +1,44 @@
+# 📦 SUMMARY  
+# These commands let you access a running Docker container's shell, navigate its filesystem, view environment variables, and list app files.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to interactively explore a running container’s environment and files  
+# Outcome: Gain hands-on access to the container for debugging, inspecting config, or manual operations  
+# Why this matters: Debugging and troubleshooting often require inspecting container internals directly  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Enter Container Shell  
+# ------------------------------  
+docker exec -it <container_id> /bin/sh  
+# ✅ What it does: Opens an interactive shell session inside the running container identified by <container_id>  
+# 🧠 Why it matters: Gives direct access to the container’s file system and environment for inspection or debugging  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Navigate and Inspect Environment  
+# ------------------------------  
+cd /  
+# ✅ What it does: Changes directory to the root of the container’s filesystem  
+# 🧠 Why it matters: Provides a starting point to explore container files  
+
+env  
+# ✅ What it does: Lists all environment variables inside the container, including those set via Dockerfile or docker run  
+# 🧠 Why it matters: Helps verify if environment variables like MONGO_DB_USERNAME and MONGO_DB_PWD are set correctly  
+
+ls /home/app/  
+# ✅ What it does: Lists files and directories inside the app directory where your code resides  
+# 🧠 Why it matters: Confirms your app files were copied into the container and are present for execution  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS CODE IN WINDOWS POWERSHELL  
+# ------------------------------  
+# Commands are the same:  
+docker exec -it <container_id> /bin/sh  
+cd /  
+env  
+ls /home/app/  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Use `/bin/bash` instead of `/bin/sh` if the container has bash installed  
+# - Use `exit` to leave the container shell and return to your host terminal  
+# - If you get "exec: /bin/sh: not found", try `/bin/ash` (common in Alpine images)  

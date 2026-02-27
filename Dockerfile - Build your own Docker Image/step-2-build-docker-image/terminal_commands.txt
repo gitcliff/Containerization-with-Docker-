@@ -1,0 +1,36 @@
+# 📦 SUMMARY  
+# These commands build a Docker image from your Dockerfile and then list all Docker images on your system.  
+# Language/Platform: Bash (Docker CLI)  
+# What you'll learn: How to create a Docker image and verify it exists locally  
+# Outcome: A Docker image tagged as my-app:1.0 is created and visible in your image list  
+# Why this matters: Building images is a fundamental step before running containers from your app  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Build Docker Image  
+# ------------------------------  
+docker build -t my-app:1.0 .  
+# ✅ What it does: Builds a Docker image using the Dockerfile in the current directory (.)  
+#   - Tags the image as "my-app" with version "1.0" for easy identification  
+# 🧠 Why it matters: Converts your app and its environment into a portable, reproducible container image  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: List Docker Images  
+# ------------------------------  
+docker image ls  
+# ✅ What it does: Lists all Docker images on your system with their repository name, tag, image ID, creation date, and size  
+# 🧠 Why it matters: Confirms that your image was successfully built and is available for use  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS CODE IN WINDOWS POWERSHELL  
+# ------------------------------  
+# Equivalent commands are the same in PowerShell:  
+docker build -t my-app:1.0 .  
+docker image ls  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - If the build fails, check for Dockerfile syntax errors or missing files in the build context  
+# - Use descriptive tags (e.g., version numbers) to manage multiple image versions  
+# - You can run the image with:  
+#   docker run -p 3000:3000 my-app:1.0  
