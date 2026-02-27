@@ -1,0 +1,29 @@
+# 📦 SUMMARY  
+# This YAML snippet defines a container service configuration (commonly used in Docker Compose or Kubernetes manifests)  
+# Language/Platform: YAML (Docker Compose or Kubernetes)  
+# What you'll learn: How to specify a container image and map ports for the container  
+# Outcome: Runs the "my-app" container using a specific image version from AWS ECR and maps port 3000 on the host to port 3000 in the container  
+# Why this matters: Proper container image references and port mappings allow your app to run and be accessible correctly  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Container Service Definition  
+# ------------------------------  
+my-app:  # ✅ What it does: Defines a service named "my-app"  
+        # 🧠 Why it matters: Names the container for easier management and referencing  
+
+  image: 770535378489.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0  
+          # ✅ What it does: Specifies the container image to use, pulled from AWS ECR with version tag 1.0  
+          # 🧠 Why it matters: Ensures the container runs the exact image version you pushed to your private repository  
+
+  ports:  
+    - "3000:3000"  
+          # ✅ What it does: Maps port 3000 on the host machine to port 3000 inside the container  
+          # 🧠 Why it matters: Makes the application accessible on your machine at localhost:3000 (or the host's IP)  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - In Docker Compose, this snippet would be part of the "services:" section  
+# - Ensure that the ECR image is accessible (logged in to AWS ECR via docker login)  
+# - Port mapping is crucial so you can access the app from outside the container  
+# - Replace the AWS account ID and region in the image URI with your own  

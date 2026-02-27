@@ -1,0 +1,27 @@
+# 📦 SUMMARY  
+# This command starts all the services defined in your docker-compose.yaml file, creating and running containers as specified.  
+# Language/Platform: Bash (Docker Compose)  
+# What you'll learn: How to launch multi-container applications using Docker Compose  
+# Outcome: Docker containers defined in the docker-compose.yaml will start running on your machine  
+# Why this matters: Simplifies running complex applications with multiple containers and dependencies in a single command  
+
+# ------------------------------  
+# 🧩 SECTION TITLE: Run Docker Compose File  
+# ------------------------------  
+docker-compose -f ./docker-compose.yaml up  
+# ✅ What it does: Reads the docker-compose.yaml file in the current directory and starts all defined services, showing logs in your terminal  
+# 🧠 Why it matters: Enables easy and repeatable launching of multi-container setups without manual docker run commands  
+
+# ------------------------------  
+# ▶️ HOW TO RUN / EXECUTE THIS CODE IN WINDOWS POWERSHELL  
+# ------------------------------  
+# The same command works in PowerShell as in bash:  
+docker-compose -f ./docker-compose.yaml up  
+
+# ------------------------------  
+# ✅ NOTES / GOTCHAS / TIPS  
+# ------------------------------  
+# - Add "-d" flag (docker-compose -f ./docker-compose.yaml up -d) to run containers in detached mode (background)  
+# - Make sure Docker daemon is running before executing this command  
+# - If you change the docker-compose.yaml file, restart with "docker-compose down" then "docker-compose up"  
+# - Use "docker-compose logs" to view container logs after startup if needed  
